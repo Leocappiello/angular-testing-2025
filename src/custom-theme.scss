@@ -1,0 +1,93 @@
+
+// // Custom Theming for Angular Material
+// // For more information: https://material.angular.io/guide/theming
+// @use '@angular/material' as mat;
+// // Plus imports for other components in your app.
+
+// // Include the common styles for Angular Material. We include this here so that you only
+// // have to load a single css file for Angular Material in your app.
+// // Be sure that you only ever include this mixin once!
+// @include mat.core();
+
+// // Define the palettes for your theme using the Material Design palettes available in palette.scss
+// // (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// // hue. Available color palettes: https://material.io/design/color/
+// $my-app-primary: mat.define-palette(mat.$indigo-palette);
+// $my-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// // The warn palette is optional (defaults to red).
+// $my-app-warn: mat.define-palette(mat.$red-palette);
+
+// // Create the theme object. A theme consists of configurations for individual
+// // theming systems such as "color" or "typography".
+// $my-app-theme: mat.define-light-theme((
+//   color: (
+//     primary: $my-app-primary,
+//     accent: $my-app-accent,
+//     warn: $my-app-warn,
+//   ),
+//   typography: mat.define-typography-config(),
+//   density: 0
+// ));
+
+// // Include theme styles for core and each component used in your app.
+// // Alternatively, you can import and @include the theme mixins for each component
+// // that you are using.
+// @include mat.all-component-themes($my-app-theme);
+
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// 🎨 Paleta personalizada basada en #DC3546
+$my-primary-palette: (
+  50: #f9e1e3,
+  100: #f2b3b8,
+  200: #eb8088,
+  300: #e44d58,
+  400: #df2635,
+  500: #DC3546, // 👈 Color principal
+  600: #c9303f,
+  700: #b52a36,
+  800: #a0242e,
+  900: #7e1b20,
+  A100: #ffcdd2,
+  A200: #ef9a9a,
+  A400: #e57373,
+  A700: #d32f2f,
+  contrast: (
+    50: black,
+    100: black,
+    200: black,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: black,
+    A200: black,
+    A400: white,
+    A700: white
+  )
+);
+
+// 💠 Definir las paletas del tema
+$my-app-primary: mat.define-palette($my-primary-palette, 500);
+$my-app-accent: mat.define-palette(mat.$blue-palette, A200, A100, A400);
+$my-app-warn: mat.define-palette(mat.$red-palette);
+
+// 🌈 Crear el tema claro
+$my-app-theme: mat.define-light-theme((
+  color: (
+    primary: $my-app-primary,
+    accent: $my-app-accent,
+    warn: $my-app-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0
+));
+
+// 🧩 Aplicar el tema a todos los componentes de Angular Material
+@include mat.all-component-themes($my-app-theme);

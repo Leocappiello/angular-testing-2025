@@ -1,0 +1,26 @@
+<h2>Agendar una Cita</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>Fecha</label>
+  <input type="date" formControlName="date" />
+
+  <label>Hora</label>
+  <select formControlName="time">
+    <option *ngFor="let t of times" [value]="t">{{t}}</option>
+  </select>
+
+  <label>Mascota</label>
+  <input formControlName="petName" placeholder="Nombre de tu mascota" />
+
+  <label>Servicio</label>
+  <select formControlName="service">
+    <option>Consulta General</option>
+    <option>Vacunación</option>
+    <option>Control</option>
+  </select>
+
+  <label>Descripción</label>
+  <textarea formControlName="description"></textarea>
+
+  <button type="submit" [disabled]="form.invalid">Confirmar Cita</button>
+</form>

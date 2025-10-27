@@ -1,0 +1,57 @@
+/* Reutiliza estilos del login si quieres: */
+.auth-wrapper {
+  min-height: calc(100dvh - 64px);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+.auth-card {
+  width: 100%;
+  max-width: 640px;
+  padding: 16px;
+  border-radius: 16px;
+}
+.title { margin: 4px 0 8px; font-size: 1.4rem; font-weight: 700; }
+
+.helpers {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+
+.muted {
+  font-size: 0.9rem;
+  color: rgba(0,0,0,0.6);
+  text-decoration: none;
+}
+.muted:hover { text-decoration: underline; }
+
+/* Grid responsive */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+.col { width: 100%; }
+.span-2 { grid-column: span 2; }
+.submit { width: 100%; padding: 8px 0; border-radius: 10px; }
+.error { color: #d32f2f; margin-top: 6px; }
+
+/* Skeletons */
+.skeleton-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.skeleton { position: relative; overflow: hidden; background: rgba(0,0,0,0.08); border-radius: 10px; }
+.skeleton::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+  animation: shimmer 1.2s infinite;
+}
+.skeleton-field { height: 56px; }
+.skeleton-button { height: 40px; grid-column: span 2; }
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+@media (max-width: 520px) {
+  .grid, .skeleton-grid { grid-template-columns: 1fr; }
+  .span-2 { grid-column: span 1; }
+}

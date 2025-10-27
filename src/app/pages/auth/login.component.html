@@ -1,0 +1,84 @@
+<!-- <h2>Iniciar Sesión</h2>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>Email</label>
+  <input formControlName="email" type="email" placeholder="ejemplo@mail.com" />
+  <div *ngIf="form.controls.email.invalid && form.controls.email.touched">Email inválido</div>
+
+  <label>Contraseña</label>
+  <input formControlName="password" type="password" placeholder="******" />
+
+  <button type="submit" [disabled]="form.invalid">Entrar</button>
+  <p *ngIf="error" class="error">{{ error }}</p>
+</form> -->
+
+<div class="auth-wrapper">
+  <mat-card class="auth-card">
+    <h1 class="title">Iniciar Sesión</h1>
+
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+    <div *ngIf="loading; else formTpl" class="skeleton-stack">
+      <div class="skeleton skeleton-field"></div>
+      <div class="skeleton skeleton-field"></div>
+      <div class="skeleton skeleton-button"></div>
+    </div>
+
+    <ng-template #formTpl>
+      <form (ngSubmit)="submit()" [formGroup]="form" novalidate class="form">
+        <mat-form-field appearance="outline" class="field">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="email"
+            formControlName="email"
+            placeholder="ejemplo@mail.com"
+            autocomplete="email"
+          />
+          <mat-error *ngIf="form.controls.email.hasError('required')">
+            El email es obligatorio
+          </mat-error>
+          <mat-error *ngIf="form.controls.email.hasError('email')">
+            Ingresa un email válido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="field">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+            autocomplete="current-password"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="hide = !hide"
+            [attr.aria-label]="hide ? 'Mostrar contraseña' : 'Ocultar contraseña'">
+            <mat-icon>{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="form.controls.password.hasError('required')">
+            La contraseña es obligatoria
+          </mat-error>
+        </mat-form-field>
+
+        <!-- El detalle importante -->
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          class="submit"
+          [disabled]="form.invalid || loading">
+          Entrar
+        </button>
+
+        <div class="error" *ngIf="error">{{ error }}</div>
+
+        <div class="helpers">
+          <a routerLink="/register" class="muted">¿No tienes cuenta? Regístrate</a>
+        </div>
+      </form>
+    </ng-template>
+  </mat-card>
+</div>

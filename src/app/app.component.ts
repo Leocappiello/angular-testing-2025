@@ -1,13 +1,20 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './core/components/header.component';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [RouterOutlet, HeaderComponent],
+  template: `
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  `
 })
 export class AppComponent {
-  title = 'my-app';
-}
+
+  constructor(private auth: AuthService) {
+    this.auth.init(); // Verifica si hay sesión activa al cargar la app
+  }
+ }

@@ -1,0 +1,111 @@
+<!-- <h2>Crear Cuenta</h2>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label>Nombre</label>
+  <input formControlName="name" />
+
+  <label>Apellido</label>
+  <input formControlName="surname" />
+
+  <label>Email</label>
+  <input formControlName="email" type="email" />
+
+  <label>Contraseña</label>
+  <input formControlName="password" type="password" />
+
+  <label>Dirección</label>
+  <input formControlName="address" />
+
+  <label>DNI</label>
+  <input formControlName="dni" />
+
+  <label>Código Postal</label>
+  <input formControlName="postalCode" />
+
+  <button type="submit" [disabled]="form.invalid">Registrarse</button>
+</form> -->
+
+<div class="auth-wrapper">
+  <mat-card class="auth-card">
+    <h1 class="title">Crear Cuenta</h1>
+
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+    <!-- Skeletons -->
+    <div *ngIf="loading; else formTpl" class="skeleton-grid">
+      <div class="skeleton skeleton-field"></div>
+      <div class="skeleton skeleton-field"></div>
+      <div class="skeleton skeleton-field"></div>
+      <div class="skeleton skeleton-field"></div>
+      <div class="skeleton skeleton-field"></div>
+      <div class="skeleton skeleton-field"></div>
+      <div class="skeleton skeleton-button"></div>
+    </div>
+
+    <ng-template #formTpl>
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="grid">
+        <mat-form-field appearance="outline" class="col">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" />
+          <mat-error *ngIf="form.controls.name.hasError('required')">Requerido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col">
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="surname" />
+          <mat-error *ngIf="form.controls.surname.hasError('required')">Requerido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" autocomplete="email" />
+          <mat-error *ngIf="form.controls.email.hasError('required')">Requerido</mat-error>
+          <mat-error *ngIf="form.controls.email.hasError('email')">Email inválido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="new-password" />
+          <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
+            <mat-icon>{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
+          <mat-hint>Mínimo 6 caracteres</mat-hint>
+          <mat-error *ngIf="form.controls.password.hasError('required')">Requerido</mat-error>
+          <mat-error *ngIf="form.controls.password.hasError('minlength')">Muy corta</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col span-2">
+          <mat-label>Dirección</mat-label>
+          <input matInput formControlName="address" />
+          <mat-error *ngIf="form.controls.address.hasError('required')">Requerido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col">
+          <mat-label>DNI</mat-label>
+          <input matInput formControlName="dni" />
+          <mat-error *ngIf="form.controls.dni.hasError('required')">Requerido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col">
+          <mat-label>Código Postal</mat-label>
+          <input matInput formControlName="postalCode" />
+          <mat-error *ngIf="form.controls.postalCode.hasError('required')">Requerido</mat-error>
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          class="submit span-2"
+          [disabled]="form.invalid || loading">
+          Registrarse
+        </button>
+
+        <div class="error span-2" *ngIf="error">{{ error }}</div>
+
+      </form>
+      <div class="helpers">
+        <a routerLink="/login" class="muted">¿Ya tienes cuenta? Inicia sesion</a>
+      </div>
+    </ng-template>
+  </mat-card>
+</div>

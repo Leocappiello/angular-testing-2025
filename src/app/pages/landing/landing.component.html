@@ -1,0 +1,78 @@
+<!-- src/app/pages/landing/landing.component.html -->
+<!-- <div class="landing">
+  <h1>🐾 Bienvenido a VetCare</h1>
+  <p>Tu veterinaria de confianza</p>
+
+  <ng-container *ngIf="auth.user$ | async as user; else notLogged">
+    <div *ngIf="user.role === 'USER' && user.client; else adminView">
+      <p>Hola, {{ user.client.name }} 👋</p>
+      <button type="button" [routerLink]="'/client'">
+        Ir a mi Panel
+      </button>
+    </div>
+
+    <ng-template #adminView>
+      <p>Hola, {{ user.email }} 👋</p>
+      <button type="button" [routerLink]="'/admin'">
+        Ir al Panel de Administración
+      </button>
+    </ng-template>
+  </ng-container>
+
+
+  <ng-template #notLogged>
+    <p>Hola 👋, iniciá sesión para continuar.</p>
+  </ng-template>
+</div> -->
+
+
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <mat-icon>pets</mat-icon>
+      <span>VetCare</span>
+    </div>
+
+    <h1>Bienvenido a <span class="brand">VetCare</span></h1>
+    <p class="subtitle">Tu veterinaria de confianza</p>
+
+    <!-- Si está logueado mostramos CTA al panel; si no, nada (el header ya tiene login/register) -->
+    <ng-container *ngIf="auth.user$ | async as user">
+      <div class="greeting" *ngIf="user; else noCta">
+        <span>Hola, {{ user.client.name || user.email }} 👋</span>
+        <div class="cta">
+          <a
+            mat-flat-button
+            color="primary"
+            [routerLink]="user.role === 'ADMIN' ? '/admin' : '/client'">
+            Ir a mi Panel
+          </a>
+        </div>
+      </div>
+      <ng-template #noCta>
+        <!-- Espacio silencioso; sin botones de login/register -->
+      </ng-template>
+    </ng-container>
+  </div>
+</section>
+
+<section class="features">
+  <mat-card class="feature">
+    <mat-icon>favorite</mat-icon>
+    <h3>Atención con cariño</h3>
+    <p>Cuidamos a tus mascotas como si fueran nuestras.</p>
+  </mat-card>
+
+  <mat-card class="feature">
+    <mat-icon>event_available</mat-icon>
+    <h3>Turnos online</h3>
+    <p>Reserva y gestiona tus citas de forma simple.</p>
+  </mat-card>
+
+  <mat-card class="feature">
+    <mat-icon>vaccines</mat-icon>
+    <h3>Vacunación y controles</h3>
+    <p>Seguimiento completo para su bienestar.</p>
+  </mat-card>
+</section>

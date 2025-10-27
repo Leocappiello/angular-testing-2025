@@ -1,0 +1,17 @@
+<h2>Panel de Administración</h2>
+<table>
+  <tr>
+    <th>Cliente</th>
+    <th>Mascota</th>
+    <th>Servicio</th>
+    <th>Fecha</th>
+    <th>Hora</th>
+  </tr>
+  <tr *ngFor="let a of appointments">
+    <td>{{a.clientName}}</td>
+    <td>{{a.petName}}</td>
+    <td>{{a.service}}</td>
+    <td>{{a.date}}</td>
+    <td>{{a.time}}</td>
+  </tr>
+</table>
