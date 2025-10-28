@@ -9,4 +9,7 @@ export const CONSTANTS = {
     register: `${BACK_URL}auth/signup`,
     pet: `${BACK_URL}pets/me`,
     date: `${BACK_URL}date`,
+    listPet: `${BACK_URL}pets`,
+    createPet: `${BACK_URL}pets`,
+    deletePet: `${BACK_URL}pets`
 }

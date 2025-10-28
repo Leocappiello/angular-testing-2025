@@ -5,6 +5,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 import { CONSTANTS } from './constants';
 
 interface Client {
+  id: string;
   name: string;
   surname: string;
   adddress: string;
@@ -44,23 +45,23 @@ export class AuthService {
 //   );
 // }
 
-login(credentials: { email: string; password: string }) {
-  return this.http.post(CONSTANTS.login, credentials, { withCredentials: true }).pipe(
-    tap(() => {
-      this.fetchUser().subscribe(user => {
-        if (user?.role === 'ADMIN') {
-          this.router.navigate(['/admin']);
-        } else if (user?.role === 'USER') {
-          this.router.navigate(['/client']);
-        }
-      });
-    })
-  );
-}
+  login(credentials: { email: string; password: string }) {
+    return this.http.post(CONSTANTS.login, credentials, { withCredentials: true }).pipe(
+      tap(() => {
+        this.fetchUser().subscribe(user => {
+          if (user?.role === 'ADMIN') {
+            this.router.navigate(['/admin']);
+          } else if (user?.role === 'USER') {
+            this.router.navigate(['/client']);
+          }
+        });
+      })
+    );
+  }
 
-clearSession() {
-  this.userSubject.next(null);
-}
+  clearSession() {
+    this.userSubject.next(null);
+  }
 
   register(data: any) {
     return this.http.post(CONSTANTS.register, data, { withCredentials: true });

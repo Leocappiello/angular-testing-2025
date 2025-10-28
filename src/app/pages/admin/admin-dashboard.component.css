@@ -1,0 +1,78 @@
+/* Contenedor general */
+:host {
+  display: block;
+  padding: 1.5rem;
+  background-color: #fafafa;
+}
+
+/* Tarjeta que envuelve la tabla */
+mat-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  margin-bottom: 1.5rem;
+  background: #ffffff;
+}
+
+/* Título */
+mat-card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+/* Tabla */
+table.mat-elevation-z8 {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* Encabezados */
+.mat-header-cell {
+  background-color: #f5f5f5;
+  color: #555;
+  font-weight: 600;
+  padding: 12px 16px;
+}
+
+/* Celdas */
+.mat-cell {
+  padding: 10px 16px;
+  color: #444;
+}
+
+/* Hover en filas */
+tr.mat-row:hover {
+  background-color: rgba(0,0,0,0.04);
+}
+
+/* Alternar fondo (opcional) */
+tr.mat-row:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Columna de acciones: tamaño más contenido */
+.mat-column-actions {
+  width: 60px;
+  text-align: center;
+}
+
+/* Paginador estilo */
+.mat-paginator {
+  padding: 0.5rem 1rem;
+  color: #666;
+}
+
+/* Iconos de acción */
+button.mat-icon-button {
+  color: #d32f2f; /* rojo warn para “eliminar” */
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .mat-header-cell, .mat-cell {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
