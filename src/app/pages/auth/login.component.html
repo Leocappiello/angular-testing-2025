@@ -28,6 +28,7 @@
         <mat-form-field appearance="outline" class="field">
           <mat-label>Email</mat-label>
           <input
+            id="email"
             matInput
             type="email"
             formControlName="email"
@@ -46,6 +47,7 @@
           <mat-label>Contraseña</mat-label>
           <input
             matInput
+            id="password"
             [type]="hide ? 'password' : 'text'"
             formControlName="password"
             autocomplete="current-password"
@@ -76,7 +78,7 @@
         <div class="error" *ngIf="error">{{ error }}</div>
 
         <div class="helpers">
-          <a routerLink="/register" class="muted">¿No tienes cuenta? Regístrate</a>
+          <a routerLink="/register" class="muted" id="hasaccount">¿No tienes cuenta? Regístrate</a>
         </div>
       </form>
     </ng-template>

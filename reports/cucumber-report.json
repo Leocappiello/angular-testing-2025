@@ -1,0 +1,145 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "registro-de-usuarios;registro-exitoso-de-un-nuevo-usuario",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Registro exitoso de un nuevo usuario",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 760971999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "el usuario está en la página de registro",
+            "match": {
+              "location": "e2e\\steps\\register.step.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 912281700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "ingresa sus datos válidos y envía el formulario",
+            "match": {
+              "location": "e2e\\steps\\register.step.ts:18"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 179239599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "debería ver un mensaje de registro exitoso",
+            "match": {
+              "location": "e2e\\steps\\register.step.ts:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 319199
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 420783799
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "registro-de-usuarios;registro-fallido-por-email-ya-existente",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "Registro fallido por email ya existente",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 777982700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 9,
+            "name": "el usuario está en la página de registro",
+            "match": {
+              "location": "e2e\\steps\\register.step.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 919944500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "intenta registrarse con un email existente",
+            "match": {
+              "location": "e2e\\steps\\register.step.ts:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 198292699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "debería ver un mensaje de error",
+            "match": {
+              "location": "e2e\\steps\\register.step.ts:46"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 392509000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 4532412900
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "registro-de-usuarios",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Registro de usuarios",
+    "tags": [],
+    "uri": "e2e\\features\\register.feature"
+  }
+]
