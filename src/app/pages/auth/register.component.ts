@@ -4,35 +4,6 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 
-// @Component({
-//   selector: 'app-register',
-//   standalone: true,
-//   imports: [CommonModule, ReactiveFormsModule],
-//   templateUrl: './register.component.html',
-//   styleUrls: ['./register.component.css']
-// })
-// export class RegisterComponent {
-//   form = this.fb.group({
-//     name: ['', Validators.required],
-//     surname: ['', Validators.required],
-//     email: ['', [Validators.required, Validators.email]],
-//     password: ['', Validators.required],
-//     address: ['', Validators.required],
-//     dni: ['', Validators.required],
-//     postalCode: ['', Validators.required],
-//   });
-
-//   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {}
-
-//   submit() {
-//     if (this.form.invalid) return;
-//     this.auth.register(this.form.value).subscribe({
-//       next: () => this.router.navigate(['/login']),
-//       error: () => alert('Error al registrarse')
-//     });
-//   }
-// }
-
 // Material
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';

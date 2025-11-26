@@ -39,11 +39,11 @@ export class AuthService {
     });
   }
 
-//  login(credentials: { email: string; password: string }) {
-//   return this.http.post(CONSTANTS.login, credentials, { withCredentials: true }).pipe(
-//     tap(() => this.fetchUser())
-//   );
-// }
+  //  login(credentials: { email: string; password: string }) {
+  //   return this.http.post(CONSTANTS.login, credentials, { withCredentials: true }).pipe(
+  //     tap(() => this.fetchUser())
+  //   );
+  // }
 
   login(credentials: { email: string; password: string }) {
     return this.http.post(CONSTANTS.login, credentials, { withCredentials: true }).pipe(
@@ -78,5 +78,9 @@ export class AuthService {
       this.userSubject.next(null);
       this.router.navigate(['/']);
     });
+  }
+
+  loginWithGoogle() {
+    window.location.href = CONSTANTS.loginWithGoogle;
   }
 }
