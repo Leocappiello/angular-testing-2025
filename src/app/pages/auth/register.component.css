@@ -55,3 +55,14 @@
   .grid, .skeleton-grid { grid-template-columns: 1fr; }
   .span-2 { grid-column: span 1; }
 }
+
+
+.google-btn {
+  width: 100%;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-transform: none;
+}

@@ -1,16 +1,3 @@
-<!-- <h2>Iniciar Sesión</h2>
-<form [formGroup]="form" (ngSubmit)="submit()">
-  <label>Email</label>
-  <input formControlName="email" type="email" placeholder="ejemplo@mail.com" />
-  <div *ngIf="form.controls.email.invalid && form.controls.email.touched">Email inválido</div>
-
-  <label>Contraseña</label>
-  <input formControlName="password" type="password" placeholder="******" />
-
-  <button type="submit" [disabled]="form.invalid">Entrar</button>
-  <p *ngIf="error" class="error">{{ error }}</p>
-</form> -->
-
 <div class="auth-wrapper">
   <mat-card class="auth-card">
     <h1 class="title">Iniciar Sesión</h1>
@@ -24,17 +11,12 @@
     </div>
 
     <ng-template #formTpl>
+
       <form (ngSubmit)="submit()" [formGroup]="form" novalidate class="form">
         <mat-form-field appearance="outline" class="field">
           <mat-label>Email</mat-label>
-          <input
-            id="email"
-            matInput
-            type="email"
-            formControlName="email"
-            placeholder="ejemplo@mail.com"
-            autocomplete="email"
-          />
+          <input id="email" matInput type="email" formControlName="email" placeholder="ejemplo@mail.com"
+            autocomplete="email" />
           <mat-error *ngIf="form.controls.email.hasError('required')">
             El email es obligatorio
           </mat-error>
@@ -45,18 +27,9 @@
 
         <mat-form-field appearance="outline" class="field">
           <mat-label>Contraseña</mat-label>
-          <input
-            matInput
-            id="password"
-            [type]="hide ? 'password' : 'text'"
-            formControlName="password"
-            autocomplete="current-password"
-          />
-          <button
-            mat-icon-button
-            matSuffix
-            type="button"
-            (click)="hide = !hide"
+          <input matInput id="password" [type]="hide ? 'password' : 'text'" formControlName="password"
+            autocomplete="current-password" />
+          <button mat-icon-button matSuffix type="button" (click)="hide = !hide"
             [attr.aria-label]="hide ? 'Mostrar contraseña' : 'Ocultar contraseña'">
             <mat-icon>{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
           </button>
@@ -65,14 +38,26 @@
           </mat-error>
         </mat-form-field>
 
-        <!-- El detalle importante -->
-        <button
-          mat-flat-button
-          color="primary"
-          type="submit"
-          class="submit"
-          [disabled]="form.invalid || loading">
+        <!-- captcha -->
+
+        <div style="display: flex; width: 100%; justify-content: center;" class="cf-turnstile"
+          [attr.data-sitekey]="siteKey" data-callback="onTurnstileSuccess" data-error-callback="onTurnstileError">
+        </div>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+        <button mat-flat-button color="primary" type="submit" class="submit"
+          [disabled]="form.invalid || loading || !form.value.turnstileToken">
           Entrar
+        </button>
+
+
+        <button mat-stroked-button type="button" class="google-btn" (click)="loginWithGoogle()">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+            alt="Google" class="google-logo"
+            width="20"
+            height="20"
+            />
         </button>
 
         <div class="error" *ngIf="error">{{ error }}</div>
